@@ -26,6 +26,8 @@ class TagResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $recordTitleAttribute = 'name';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -49,7 +51,7 @@ class TagResource extends Resource
             ->columns([
                 //
                 TextColumn::make('id')->sortable(),
-                TextColumn::make('name')->limit('50')->sortable(),
+                TextColumn::make('name')->limit('50')->sortable()->searchable(),
                 TextColumn::make('slug')->limit('50'),
             ])
             ->filters([
